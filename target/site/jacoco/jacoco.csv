@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+pingtai,com.example.pingtai.service,Saveimpl,0,10,0,0,0,3,0,2,0,2
+pingtai,com.example.pingtai,PingtaiApplication,5,3,0,0,2,1,1,1,1,1
+pingtai,com.example.pingtai.controller,Controller,6,3,0,0,2,1,1,1,1,1
+pingtai,com.example.pingtai.domain.entity,LarkCaseCommon,8,30,0,0,4,12,2,9,2,9

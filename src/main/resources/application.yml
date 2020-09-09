@@ -1,0 +1,37 @@
+spring:
+   datasource:
+      url: jdbc:mysql://127.0.0.1:3306/xnpt?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      driverClassName: com.mysql.jdbc.Driver
+      username: root
+      password: 1234
+      type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+   #config-locations: mybatis/mybatis-config.xml
+   mapper-locations: classpath:mapper/*Mapper.xml
+   type-aliases-package: com.example.pingtai.domain
+
+#showSql
+#logging:
+#   level:
+#      com:
+#         example:
+#            mapper : debug
+
+logging:
+   level:
+      com:
+         example:
+            pingtai:
+               mapper: debug
+
+pylon: # eleme-soa-starter SDK 的配置项
+   server:
+      basePackages: # 列出所有需要暴露为SOA服务的接口所在包
+         - "me.ele.star.epic.api"
+   clients: #列出所有需要引入的第三方SOA，下面列出的接口必须在Classpath内，否则启动会出错
+
+      - name: euc.info
+        protocol: json
+        interfaces:
+           - me.ele.eucinfo.api.ExternalTagCommandService

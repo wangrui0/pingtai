@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.pingtai.mapper.LarkCaseCommonMapper" >
+  <resultMap id="BaseResultMap" type="com.example.pingtai.domain.entity.LarkCaseCommon" >
+
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="case_id" property="caseId" jdbcType="VARCHAR" />
+    <result column="common_data_id" property="commonDataId" jdbcType="VARCHAR" />
+    <result column="common_appid_id" property="commonAppidId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, case_id, common_data_id, common_appid_id, create_time
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+    select 
+    <include refid="Base_Column_List" />
+    from lark_case_common
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lark_case_common
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.example.pingtai.domain.entity.LarkCaseCommon" >
+    insert into lark_case_common (id, case_id, common_data_id, 
+      common_appid_id, create_time)
+    values (#{id,jdbcType=INTEGER}, #{caseId,jdbcType=VARCHAR}, #{commonDataId,jdbcType=VARCHAR}, 
+      #{commonAppidId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.example.pingtai.domain.entity.LarkCaseCommon" >
+    insert into lark_case_common
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="caseId != null" >
+        case_id,
+      </if>
+      <if test="commonDataId != null" >
+        common_data_id,
+      </if>
+      <if test="commonAppidId != null" >
+        common_appid_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null" >
+        #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonDataId != null" >
+        #{commonDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonAppidId != null" >
+        #{commonAppidId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.pingtai.domain.entity.LarkCaseCommon" >
+    update lark_case_common
+    <set >
+      <if test="caseId != null" >
+        case_id = #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonDataId != null" >
+        common_data_id = #{commonDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonAppidId != null" >
+        common_appid_id = #{commonAppidId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.pingtai.domain.entity.LarkCaseCommon" >
+    update lark_case_common
+    set case_id = #{caseId,jdbcType=VARCHAR},
+      common_data_id = #{commonDataId,jdbcType=VARCHAR},
+      common_appid_id = #{commonAppidId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
